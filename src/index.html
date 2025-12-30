@@ -2,25 +2,29 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="./css/styles.css">
-    <script src="https://unpkg.com/scrollreveal"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css" integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="./css/styles.css">
+  <script src="https://unpkg.com/scrollreveal"></script>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Montserrat:wght@300;400;600;700&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css"
+    integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
 
 
-    <title>Antunes Interiores</title>
+  <title>Antunes Interiores</title>
 </head>
 
 <body>
 
-    <header>
-    <div class="flex fixed bg-headerbg w-full px-3 md:px-20 py-3">
+  <header>
+    <div class="flex bg-headerbg w-full px-3 md:px-20 py-3">
       <div class="container flex items-center mx-auto">
         <div>
           <a href="#">
-            <img src="./img/logo.png" alt="logo antunes" class="w-20 md:w-125px">
+            <img src="./img/logo.png" alt="logo antunes" class="w-auto md:w-[70px] h-10 md:h-auto">
           </a>
         </div>
         <div class="flex justify-end flex-1 md:hidden text-maintext text-3xl">
@@ -28,15 +32,19 @@
         </div>
         <div class="items-end flex-1 text-maintext font-display hidden md:flex">
           <nav class="flex-1">
-            <ul class="flex justify-end flex-1">
+            <ul class="flex justify-end flex-1 ">
               <li class="px-4">
-                <a href="#" class="hover:text-[#A68A64] hover:underline hover:underline-offset-4 text-sm transition-colors duration-200">Serviços</a>
+                <a href="#"
+                  class="hover:text-[#A68A64] hover:underline hover:underline-offset-4 text-sm transition-colors duration-200 md:text-xl">Serviços</a>
               </li>
               <li class="px-4">
-                <a href="#" class="hover:text-[#A68A64] hover:underline hover:underline-offset-4 text-sm transition-colors duration-200">Por que Antunes?</a>
+                <a href="#"
+                  class="hover:text-[#A68A64] hover:underline hover:underline-offset-4 text-sm transition-colors duration-200 md:text-xl">Por
+                  que Antunes?</a>
               </li>
               <li class="px-4">
-                <a href="#" class="hover:text-[#A68A64] hover:underline hover:underline-offset-4 text-sm transition-colors duration-200">Contato</a>
+                <a href="#"
+                  class="hover:text-[#A68A64] hover:underline hover:underline-offset-4 text-sm transition-colors duration-200 md:text-xl">Contato</a>
               </li>
             </ul>
           </nav>
@@ -45,10 +53,65 @@
     </div>
   </header>
 
-  <main>
-    <div></div>
+  <main
+    class="relative flex h-[500px] md:h-[800px] bg-hero bg-cover bg-center bg-no-repeat items-start md:items-center md:pt-0">
 
-    
+    <div class="absolute inset-0 bg-black/50"></div>
+
+    <div class="container mx-auto px-8 text-center md:ml-[100px] md:px-20 md:text-left relative z-10 pt-10">
+
+      <div class="font-montserrat font-bold text-5xl md:text-8xl text-white mb-6">
+        <h1>
+          Antunes <br>
+          <span class="font-display italic font-light text-[#e0cba8]">Interiores</span>
+        </h1>
+      </div>
+
+      <div class="max-w-xl md:max-w-full mx-auto md:mx-0">
+        <p class="text-gray-100 text-lg md:text-2xl font-light leading-relaxed">
+          Transformando espaços em cenários de vida. Sofisticação e conforto em cada detalhe.
+        </p>
+      </div>
+
+      <div class="mt-8">
+        <a href="#"
+          class="inline-block px-8 py-3 border border-[#e0cba8] font-bold rounded-full text-white font-montserrat text-sm uppercase tracking-widest hover:bg-[#e0cba8] hover:text-black transition-all duration-300">
+          Conheça nossos projetos
+        </a>
+      </div>
+
+      <section class="bg-white py-8 md:hidden border-b border-gray-100 mt-8 rounded-md">
+        <div class="container mx-auto px-4">
+
+          <div class="grid grid-cols-3 divide-x divide-gray-200">
+
+            <div class="text-center px-2">
+
+              <span class="block font-display text-3xl text-[#A68A64] font-bold">10+</span>
+              <span class="text-[10px] font-montserrat font-semibold uppercase tracking-wider text-gray-500 mt-1">Anos de Exp.</span>
+
+            </div>
+
+            <div class="text-center px-2">
+
+              <span class="block font-display text-3xl text-[#A68A64] font-bold">150+</span>
+              <span class="text-[10px] font-montserrat font-semibold uppercase tracking-wider text-gray-500 mt-1">Projetos</span>
+
+            </div>
+
+            <div class="text-center px-2">
+
+              <span class="block font-display text-3xl text-[#A68A64] font-bold">99%</span>
+              <span class="text-[10px] font-montserrat font-semibold uppercase tracking-wider text-gray-500 mt-1">Satisfação</span>
+
+            </div>
+
+          </div>
+        </div>
+      </section>
+
+    </div>
+
   </main>
 
 </body>
