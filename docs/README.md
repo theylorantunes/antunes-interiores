@@ -46,10 +46,4 @@ projeto pessoal dedicado a explorar minhas habilidades com tailwindcss
 
 5. Mobile First
 
-    Comece pelo layout para telas pequenas.
-    Use breakpoints do Tailwind:
-
-    sm: ≥ 640px
-    md: ≥ 768px
-    lg: ≥ 1024px
-
+    -Começando pelo layout para telas pequenas
