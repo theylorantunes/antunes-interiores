@@ -6,9 +6,8 @@ module.exports = {
 
       fontFamily: {
 
-        'display': ['Playfair Display', 'serif'],
-        'cormorant': ['Cormorant Garamond', 'serif'],
-        'lato': ['Lato', 'system-ui', 'sans-serif'],
+        'display': ['Cormorant Garamond', 'serif'],
+        'montserrat': ['Montserrat', 'system-ui', 'sans-serif'],
 
       },
 
