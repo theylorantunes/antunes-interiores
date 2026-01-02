@@ -1,24 +1,24 @@
 # Antunes Interiores - Landing Page
 
-![Project Cover](./src/img/hero-bg.webp)
+![Project Cover](../src/img/hero-bg.webp)
 > Uma Landing Page de alta conversão desenvolvida para um escritório de Design de Interiores.
 
-## 💻 Sobre o Projeto
+## Sobre o Projeto
 
 Este projeto consiste em uma página única totalmente responsiva. O objetivo foi criar uma interface elegante que transmitisse a identidade da marca "Antunes Interiores".
 
 ---
 
-## ✨ Funcionalidades Principais
+##  Funcionalidades Principais
 
 Aqui estão os destaques técnicos e visuais implementados no projeto:
 
-### 🎨 Interface & Design (UI)
+###  Interface & Design (UI)
 - **Design Responsivo (Mobile-First):** Layout adaptável que funciona perfeitamente em celulares, tablets e desktops grandes.
 - **Hero Section Imersiva:** Imagem de alta qualidade com sobreposição escura e tipografia hierarquizada para impacto visual imediato.
 - **Tipografia Premium:** Combinação das fontes *Cormorant Garamond* (Serifa para títulos) e *Montserrat* (Sans-serif para leitura), transmitindo luxo e modernidade.
 
-### 🚀 Experiência do Usuário (UX)
+###  Experiência do Usuário (UX)
 - **Smooth Scroll (Rolagem Suave):** Navegação fluida entre as seções ao clicar no menu, com compensação de altura para o cabeçalho fixo.
 - **Microinterações:**
   - Efeito de **Zoom Lento (Ken Burns)** nos cards de projetos.
@@ -26,7 +26,7 @@ Aqui estão os destaques técnicos e visuais implementados no projeto:
   - Botões e Links com transições suaves de cor e preenchimento.
 - **Menu Mobile Animado:** Menu lateral (Drawer) que desliza suavemente com efeito de *backdrop* e bloqueio de rolagem do fundo.
 
-### 📝 Formulário Inteligente & Contato
+###  Formulário Inteligente & Contato
 - **Máscara de Input em Tempo Real:** O campo de WhatsApp formata automaticamente o número enquanto o usuário digita: `(11) 9XXXX-XXXX`.
 - **Validação de Dados:**
   - Impede o envio de campos vazios.
@@ -36,7 +36,7 @@ Aqui estão os destaques técnicos e visuais implementados no projeto:
 
 ---
 
-## 🛠 Tecnologias Utilizadas
+##  Tecnologias Utilizadas
 
 - **HTML5 Semântico:** Estrutura acessível e organizada.
 - **Tailwind CSS:** Framework utilitário para estilização rápida, responsividade e animações.
@@ -46,7 +46,7 @@ Aqui estão os destaques técnicos e visuais implementados no projeto:
 
 ---
 
-## 📂 Estrutura de Pastas
+##  Estrutura de Pastas
 
 ```bash
 /
