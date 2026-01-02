@@ -1,3 +1,31 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+
+:root {
+    --swiper-theme-color: #A68A64;
+    --swiper-pagination-bullet-size: 10px;
+}
+
+
+.swiper-pagination {
+    bottom: 0 !important;
+    padding-bottom: 10px; 
+}
+
+.custom-prev, 
+.custom-next {
+    color: #A68A64;
+    cursor: pointer;
+    transition: color 0.3s;
+}
+
+.custom-prev:hover, 
+.custom-next:hover {
+    color: #8c7352;
+}
+
+.delay-200 {
+        transition-delay: 200ms;
+    }
