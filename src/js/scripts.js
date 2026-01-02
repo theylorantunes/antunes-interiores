@@ -1,5 +1,5 @@
 document.addEventListener('DOMContentLoaded', () => {
-    
+
     // --- LÓGICA DO MENU MOBILE ---
     const mobileBtn = document.getElementById('mobile-menu-btn');
     const closeBtn = document.getElementById('close-menu-btn');
@@ -20,11 +20,11 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
 
-// --- LÓGICA DO FORMULÁRIO E MODAL ---
+    // --- LÓGICA DO FORMULÁRIO E MODAL ---
     const btnOpenForm = document.getElementById('btn-open-form');
     const infoBlock = document.getElementById('contact-info');
     const formBlock = document.getElementById('contact-form');
-    
+
 
     const successModal = document.getElementById('success-modal');
     const modalContent = document.getElementById('modal-content');
@@ -46,7 +46,7 @@ document.addEventListener('DOMContentLoaded', () => {
         modalOverlay.classList.add('opacity-0');
         modalContent.classList.add('opacity-0', 'scale-90');
         modalContent.classList.remove('scale-100');
-        
+
         setTimeout(() => {
             successModal.classList.add('hidden');
         }, 300);
@@ -57,8 +57,8 @@ document.addEventListener('DOMContentLoaded', () => {
         modalOverlay.addEventListener('click', hideModal);
     }
 
-    if (btnOpenForm && infoBlock && formBlock) { 
-        
+    if (btnOpenForm && infoBlock && formBlock) {
+
         btnOpenForm.addEventListener('click', (e) => {
             e.preventDefault();
             infoBlock.classList.remove('opacity-100');
@@ -76,7 +76,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
 
         const phoneInput = formBlock.querySelector('input[type="tel"]');
-        if(phoneInput) {
+        if (phoneInput) {
             phoneInput.addEventListener('input', (e) => {
                 let value = e.target.value.replace(/\D/g, '');
                 if (value.length > 11) value = value.slice(0, 11);
@@ -98,7 +98,7 @@ document.addEventListener('DOMContentLoaded', () => {
             let isValid = true;
             const nameInput = formBlock.querySelector('input[type="text"]');
             const emailInput = formBlock.querySelector('input[type="email"]');
-            
+
             const setError = (input, hasError) => {
                 if (hasError) {
                     input.classList.add('border-red-500', 'placeholder-red-400');
@@ -117,9 +117,43 @@ document.addEventListener('DOMContentLoaded', () => {
             if (isValid) {
 
                 showModal();
-                
+
                 formBlock.reset();
             }
         });
     }
+    // --- SWIPER ---
+
+    if (document.querySelector('.mySwiper')) {
+        const swiper = new Swiper(".mySwiper", {
+            slidesPerView: 1,
+            spaceBetween: 30,
+            loop: true,
+
+            pagination: {
+                el: ".swiper-pagination",
+                clickable: true,
+                dynamicBullets: true,
+            },
+
+
+            navigation: {
+                nextEl: ".custom-next",
+                prevEl: ".custom-prev",
+            },
+
+            autoplay: {
+                delay: 3000,
+                disableOnInteraction: false,
+            },
+
+            breakpoints: {
+                768: {
+                    slidesPerView: 2,
+                    spaceBetween: 40,
+                }
+            }
+        });
+    }
 });
+
