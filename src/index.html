@@ -21,9 +21,10 @@
   <title>Antunes Interiores</title>
 </head>
 
-<body>
+<body class="dark:bg-[#121212] transition-colors duration-300">
 
-  <header class="top-0 left-0 w-full z-50 bg-[#fdfbf7]/90 backdrop-blur-md shadow-sm transition-all duration-300">
+  <header
+    class="top-0 left-0 w-full z-50 bg-[#fdfbf7]/90 backdrop-blur-md shadow-sm transition-all duration-300 dark:bg-[#121212]/90">
 
     <div class="container mx-auto px-6 md:px-12 h-20 flex items-center justify-between">
 
@@ -40,6 +41,10 @@
           class="px-6 py-2 bg-[#A68A64] text-white font-montserrat text-xs font-bold uppercase tracking-widest hover:bg-[#8c7352] transition-colors rounded-sm">
           Fale Conosco
         </a>
+        <button id="theme-toggle"
+          class="text-gray-600 hover:text-[#A68A64] transition-colors focus:outline-none dark:text-gray-300 p-2">
+          <i class="fas fa-moon text-lg" id="theme-icon"></i>
+        </button>
       </nav>
 
       <button id="mobile-menu-btn" class="md:hidden text-[#A68A64] text-2xl focus:outline-none">
@@ -50,16 +55,24 @@
   </header>
 
   <div id="mobile-menu"
-    class="fixed inset-0 z-[60] bg-white transform translate-x-full transition-transform duration-300 ease-in-out md:hidden flex flex-col">
+    class="fixed inset-0 z-[60] bg-white transform translate-x-full transition-transform ease-in-out md:hidden flex flex-col dark:bg-[#121212] dark:text-white">
 
     <div class="flex justify-end p-6">
       <button id="close-menu-btn" class="text-gray-500 text-3xl focus:outline-none hover:text-[#A68A64]">
         <i class="fas fa-times"></i> </button>
     </div>
 
+
     <nav class="flex flex-col items-center gap-8 mt-10">
-      <a href="#projetos" class="mobile-link font-display text-3xl text-gray-700 hover:text-[#A68A64]">Projetos</a>
-      <a href="#servicos" class="mobile-link font-display text-3xl text-gray-700 hover:text-[#A68A64]">Serviços</a>
+
+      <button id="theme-toggle-mobile"
+        class="flex items-center gap-3 font-display text-3xl text-gray-700 hover:text-[#A68A64] transition-colors dark:text-gray-200">
+        <i class="fas fa-moon" id="theme-icon-mobile"></i>
+        <span class="text-xl font-montserrat font-normal">Modo Escuro</span>
+      </button>
+
+      <a href="#projetos" class="mobile-link font-display text-3xl text-gray-700 hover:text-[#A68A64] dark:text-white">Projetos</a>
+      <a href="#servicos" class="mobile-link font-display text-3xl text-gray-700 hover:text-[#A68A64] dark:text-white ">Serviços</a>
       <a href="#contato"
         class="mobile-link mt-4 px-8 py-3 border border-[#A68A64] text-[#A68A64] font-montserrat font-bold uppercase tracking-widest hover:bg-[#A68A64] hover:text-white transition-colors">
         Iniciar meu Projeto
@@ -99,7 +112,7 @@
         </a>
       </div>
 
-      <section class="bg-white py-8 md:hidden border-b border-gray-100 mt-8 rounded-md">
+      <section class="bg-white py-8 md:hidden border-b border-gray-100 mt-8 rounded-md dark:bg-[#1f1f1f] dark:border-gray-700">
         <div class="container mx-auto px-4">
 
           <div class="grid grid-cols-3 divide-x divide-gray-200">
@@ -107,7 +120,7 @@
             <div class="text-center px-2">
 
               <span class="block font-display text-3xl text-[#A68A64] font-bold">10+</span>
-              <span class="text-[10px] font-montserrat font-semibold uppercase tracking-wider text-gray-500 mt-1">Anos
+              <span class="text-[10px] font-montserrat font-semibold uppercase tracking-wider text-gray-500 mt-1 dark:text-white">Anos
                 de Exp.</span>
 
             </div>
@@ -116,7 +129,7 @@
 
               <span class="block font-display text-3xl text-[#A68A64] font-bold">150+</span>
               <span
-                class="text-[10px] font-montserrat font-semibold uppercase tracking-wider text-gray-500 mt-1">Projetos</span>
+                class="text-[10px] font-montserrat font-semibold uppercase tracking-wider text-gray-500 mt-1 dark:text-white">Projetos</span>
 
             </div>
 
@@ -124,7 +137,7 @@
 
               <span class="block font-display text-3xl text-[#A68A64] font-bold">99%</span>
               <span
-                class="text-[10px] font-montserrat font-semibold uppercase tracking-wider text-gray-500 mt-1">Satisfação</span>
+                class="text-[10px] font-montserrat font-semibold uppercase tracking-wider text-gray-500 mt-1 dark:text-white">Satisfação</span>
 
             </div>
 
@@ -136,12 +149,12 @@
 
   </main>
 
-  <section id="projetos" class="py-20 bg-white">
+  <section id="projetos" class="py-20 bg-white dark:bg-[#121212] transition-colors duration-300">
     <div class="container mx-auto px-8 md:px-20">
 
       <div class="text-center mb-16">
         <span class="text-[#A68A64] uppercase tracking-widest text-xs font-bold">Portfólio Recente</span>
-        <h2 class="font-display text-4xl md:text-5xl text-[#747474] mt-4">Espaços com Personalidade</h2>
+        <h2 class="font-display text-4xl md:text-5xl dark:text-white mt-4">Espaços com Personalidade</h2>
       </div>
 
       <div class="relative w-full max-w-6xl mx-auto">
@@ -160,11 +173,11 @@
               <div
                 class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col items-center justify-center text-white">
                 <h3
-                  class="font-display text-3xl translate-y-4 group-hover:translate-y-0 transition-transform duration-500">
+                  class="font-display text-3xl translate-y-4 group-hover:translate-y-0 transition-transform duration-500 dark:text-white">
                   Cobertura Skyline</h3>
                 <p
                   class="font-montserrat text-xs uppercase tracking-widest mt-2 translate-y-4 group-hover:translate-y-0 transition-transform duration-500 delay-200">
-                  Salas Aconchegantes 
+                  Salas Aconchegantes
                 </p>
               </div>
             </div>
@@ -175,7 +188,7 @@
               <div
                 class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col items-center justify-center text-white">
                 <h3
-                  class="font-display text-3xl translate-y-4 group-hover:translate-y-0 transition-transform duration-500">
+                  class="font-display text-3xl translate-y-4 group-hover:translate-y-0 transition-transform duration-500 dark:text-white">
                   Mansão das Pedras</h3>
                 <p
                   class="font-montserrat text-xs uppercase tracking-widest mt-2 translate-y-4 group-hover:translate-y-0 transition-transform duration-500 delay-200">
@@ -190,7 +203,7 @@
               <div
                 class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col items-center justify-center text-white">
                 <h3
-                  class="font-display text-3xl translate-y-4 group-hover:translate-y-0 transition-transform duration-500">
+                  class="font-display text-3xl translate-y-4 group-hover:translate-y-0 transition-transform duration-500 dark:text-white">
                   Estúdio Horizonte</h3>
                 <p
                   class="font-montserrat text-xs uppercase tracking-widest mt-2 translate-y-4 group-hover:translate-y-0 transition-transform duration-500 delay-200">
@@ -205,7 +218,7 @@
               <div
                 class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col items-center justify-center text-white">
                 <h3
-                  class="font-display text-3xl translate-y-4 group-hover:translate-y-0 transition-transform duration-500">
+                  class="font-display text-3xl translate-y-4 group-hover:translate-y-0 transition-transform duration-500 dark:text-white">
                   Villa Toscana</h3>
                 <p
                   class="font-montserrat text-xs uppercase tracking-widest mt-2 translate-y-4 group-hover:translate-y-0 transition-transform duration-500 delay-200">
@@ -220,7 +233,7 @@
               <div
                 class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col items-center justify-center text-white">
                 <h3
-                  class="font-display text-3xl translate-y-4 group-hover:translate-y-0 transition-transform duration-500">
+                  class="font-display text-3xl translate-y-4 group-hover:translate-y-0 transition-transform duration-500 dark:text-white">
                   Penthouse Jardins</h3>
                 <p
                   class="font-montserrat text-xs uppercase tracking-widest mt-2 translate-y-4 group-hover:translate-y-0 transition-transform duration-500 delay-200">
@@ -235,7 +248,7 @@
               <div
                 class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col items-center justify-center text-white">
                 <h3
-                  class="font-display text-3xl translate-y-4 group-hover:translate-y-0 transition-transform duration-500">
+                  class="font-display text-3xl translate-y-4 group-hover:translate-y-0 transition-transform duration-500 dark:text-white">
                   Bangalô Serramar</h3>
                 <p
                   class="font-montserrat text-xs uppercase tracking-widest mt-2 translate-y-4 group-hover:translate-y-0 transition-transform duration-500 delay-200">
@@ -268,33 +281,33 @@
     </div>
   </section>
 
-  <section id="servicos" class="px-8 md:px-20 py-20 bg-gray-100">
-    <h2 class="font-display text-center text-5xl mb-12">Nossos serviços:</h2>
+  <section id="servicos" class="px-8 md:px-20 py-20 bg-gray-100 dark:bg-[#1f1f1f]">
+    <h2 class="font-display text-center text-5xl mb-12 text-[#747474] dark:text-white">Nossos serviços:</h2>
     <div class=" container mx-auto grid grid-cols-1 md:grid-cols-3 gap-10">
 
       <div
-        class="p-10 border border-gray-200 group hover:shadow-xl hover:-translate-y-2 transition-all duration-300 cursor-pointer">
+        class="p-10 border border-gray-200 group hover:shadow-xl hover:-translate-y-2 transition-all duration-300 cursor-pointer dark:border-gray-700 dark:bg-[#121212]">
         <i
           class="fas fa-couch text-4xl text-[#A68A64] mb-6 group-hover:scale-110 transition-transform duration-300"></i>
-        <h3 class="font-display text-2xl text-gray-700 mb-4">Design de Interiores</h3>
+        <h3 class="font-display text-2xl text-gray-700 mb-4 dark:text-white">Design de Interiores</h3>
         <p class="font-montserrat text-sm text-gray-500">Curadoria de mobiliário, texturas e cores que refletem a sua
           personalidade.</p>
       </div>
 
       <div
-        class="p-10 border border-gray-200 group hover:shadow-xl hover:-translate-y-2 transition-all duration-300 cursor-pointer">
+        class="p-10 border border-gray-200 group hover:shadow-xl hover:-translate-y-2 transition-all duration-300 cursor-pointer dark:border-gray-700 dark:bg-[#121212]">
         <i
           class="fas fa-pencil-ruler text-4xl text-[#A68A64] mb-6 group-hover:scale-110 transition-transform duration-300"></i>
-        <h3 class="font-display text-2xl text-gray-700 mb-4">Projeto Executivo</h3>
+        <h3 class="font-display text-2xl text-gray-700 mb-4 dark:text-white">Projeto Executivo</h3>
         <p class="font-montserrat text-sm text-gray-500">Detalhamento técnico completo para execução da obra sem
           surpresas e com precisão milimétrica.</p>
       </div>
 
       <div
-        class="p-10 border border-gray-200 group hover:shadow-xl hover:-translate-y-2 transition-all duration-300 cursor-pointer ">
+        class="p-10 border border-gray-200 group hover:shadow-xl hover:-translate-y-2 transition-all duration-300 cursor-pointer dark:border-gray-700 dark:bg-[#121212]">
         <i
           class="fas fa-hard-hat text-4xl text-[#A68A64] mb-6 group-hover:scale-110 transition-transform duration-300"></i>
-        <h3 class="font-display text-2xl text-gray-700 mb-4">Consultoria de Obra</h3>
+        <h3 class="font-display text-2xl text-gray-700 mb-4 dark:text-white">Consultoria de Obra</h3>
         <p class="font-montserrat text-sm text-gray-500">Acompanhamento técnico para garantir que o projeto saia do
           papel exatamente como planejado.</p>
       </div>
@@ -302,12 +315,13 @@
     </div>
   </section>
 
-  <section id="contato" class="px-8 md:px-20 py-20 bg-[#fdfbf7]">
+  <section id="contato" class="px-8 md:px-20 py-20 bg-[#fdfbf7] dark:bg-[#121212]">
     <div class="container grid grid-cols-1 md:grid-cols-2 mx-auto">
       <div>
 
         <div id="contact-info" class="p-10 md:p-20 transition-opacity duration-500 opacity-100">
-          <h3 class="font-display text-4xl md:text-5xl mb-6 text-[#747474]">Vamos transformar seu sonho?</h3>
+          <h3 class="font-display text-4xl md:text-5xl mb-6 text-[#747474] dark:text-white">Vamos transformar seu sonho?
+          </h3>
           <p class="font-montserrat font-semibold text-gray-600 mb-8">Agende uma reunião exclusiva com nossa equipe.</p>
 
           <ul class="space-y-4 mb-8 mt-6">
@@ -342,20 +356,20 @@
 
         <form id="contact-form"
           class="hidden p-10 md:p-20 transition-all ease-out translate-x-20 duration-500 opacity-0">
-          <h3 class="font-display text-3xl text-[#747474] mb-6">Preencha seus dados</h3>
+          <h3 class="font-display text-3xl text-[#747474] dark:text-white mb-6">Preencha seus dados</h3>
 
           <div class="space-y-6">
             <div>
               <input type="text" placeholder="Seu Nome"
-                class="w-full bg-transparent border-b border-gray-300 py-2 outline-none focus:border-[#A68A64] transition-colors placeholder-gray-400">
+                class="w-full bg-transparent border-b border-gray-300 py-2 outline-none focus:border-[#A68A64] transition-colors placeholder-gray-400  dark:border-gray-600 dark:text-white dark:placeholder-gray-500">
             </div>
             <div>
               <input type="email" placeholder="Seu E-mail"
-                class="w-full bg-transparent border-b border-gray-300 py-2 outline-none focus:border-[#A68A64] transition-colors placeholder-gray-400">
+                class="w-full bg-transparent border-b border-gray-300 py-2 outline-none focus:border-[#A68A64] transition-colors placeholder-gray-400  dark:border-gray-600 dark:text-white dark:placeholder-gray-500">
             </div>
             <div>
               <input type="tel" placeholder="Seu WhatsApp"
-                class="w-full bg-transparent border-b border-gray-300 py-2 outline-none focus:border-[#A68A64] transition-colors placeholder-gray-400">
+                class="w-full bg-transparent border-b border-gray-300 py-2 outline-none focus:border-[#A68A64] transition-colors placeholder-gray-400 dark:border-gray-600 dark:text-white dark:placeholder-gray-500 ">
             </div>
             <div class="relative">
               <select
@@ -372,7 +386,7 @@
 
             <div>
               <textarea rows="3" placeholder="Conte um pouco sobre seu imóvel ou sonho..."
-                class="w-full bg-transparent border-b border-gray-300 py-2 outline-none focus:border-[#A68A64] transition-colors placeholder-gray-400 resize-none"></textarea>
+                class="w-full bg-transparent border-b border-gray-300 py-2 outline-none focus:border-[#A68A64] transition-colors placeholder-gray-400 dark:text-white resize-none"></textarea>
             </div>
 
             <button type="submit"
@@ -474,14 +488,14 @@
     <div id="modal-overlay" class="absolute inset-0 bg-black/60 opacity-0 transition-opacity duration-300"></div>
 
     <div id="modal-content"
-      class="relative bg-white p-8 md:p-12 rounded-sm shadow-2xl text-center max-w-sm mx-4 transform scale-90 opacity-0 transition-all duration-300">
+      class="relative bg-white dark:bg-[#121212] p-8 md:p-12 rounded-sm shadow-2xl text-center max-w-sm mx-4 transform scale-90 opacity-0 transition-all duration-300">
 
       <div
         class="w-16 h-16 bg-[#A68A64]/20 rounded-full flex items-center justify-center mx-auto mb-6 text-[#A68A64] text-3xl">
         <i class="fas fa-check"></i>
       </div>
 
-      <h3 class="font-display text-2xl text-[#747474] mb-2">Solicitação Enviada!</h3>
+      <h3 class="font-display text-2xl text-[#747474] mb-2 dark:text-white">Solicitação Enviada!</h3>
       <p class="font-montserrat text-sm text-gray-500 mb-8 leading-relaxed">
         Recebemos seus dados com sucesso.<br>Em breve nossa equipe entrará em contato.
       </p>
