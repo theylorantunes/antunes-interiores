@@ -512,15 +512,66 @@
     </div>
   </div>
 
+  <div class="fixed bottom-6 right-6 z-[60] flex flex-col items-end gap-2">
+
+    <div id="chat-window"
+      class="hidden flex-col w-[350px] h-[450px] bg-white dark:bg-[#1f1f1f] rounded-lg shadow-2xl overflow-hidden border border-gray-100 dark:border-gray-700 transition-all duration-300 origin-bottom-right transform scale-95 opacity-0">
+
+      <div class="bg-[#A68A64] p-4 flex items-center justify-between text-white shadow-md">
+        <div class="flex items-center gap-3">
+          <div class="relative">
+            <img src="./img/logo.png" alt="Bot" class="w-8 h-8 rounded-full bg-white/20 p-1 object-contain">
+            <span
+              class="absolute bottom-0 right-0 w-2.5 h-2.5 bg-green-400 border-2 border-[#A68A64] rounded-full"></span>
+          </div>
+          <div>
+            <h4 class="font-display font-bold text-sm">Assistente Virtual</h4>
+            <p class="text-[10px] opacity-90 font-montserrat">Online agora</p>
+          </div>
+        </div>
+        <button id="close-chat-btn" class="text-white/80 hover:text-white transition-colors">
+          <i class="fas fa-times"></i>
+        </button>
+      </div>
+
+      <div id="chat-messages"
+        class="flex-1 p-4 overflow-y-auto bg-gray-50 dark:bg-[#121212] space-y-4 font-montserrat text-sm">
+      </div>
+
+      <div class="p-3 bg-white dark:bg-[#1f1f1f] border-t border-gray-100 dark:border-gray-700 flex gap-2">
+        <input type="text" id="chat-input" placeholder="Digite sua mensagem..."
+          class="flex-1 bg-gray-100 dark:bg-[#2c2c2c] text-gray-700 dark:text-gray-200 rounded-full px-4 py-2 text-sm focus:outline-none focus:ring-1 focus:ring-[#A68A64]">
+
+        <button id="send-btn"
+          class="w-9 h-9 bg-[#A68A64] text-white rounded-full flex items-center justify-center hover:bg-[#8c7352] transition-colors shadow-sm">
+          <i class="fas fa-paper-plane text-xs translate-x-[-1px] translate-y-[1px]"></i>
+        </button>
+      </div>
+
+    </div>
+
+    <button id="open-chat-btn"
+      class="group relative flex items-center justify-center w-14 h-14 bg-[#A68A64] text-white rounded-full shadow-2xl hover:scale-110 transition-transform duration-300 hover:bg-[#8c7352]">
+      <i class="fas fa-comment-dots text-2xl transition-transform duration-300 group-hover:scale-110"></i>
+
+      <span class="absolute top-0 right-0 flex h-4 w-4">
+        <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-red-400 opacity-75"></span>
+        <span
+          class="relative inline-flex rounded-full h-4 w-4 bg-red-500 border-2 border-white dark:border-gray-800"></span>
+      </span>
+    </button>
+
+  </div>
+
   <div vw class="enabled">
     <div vw-access-button class="active"></div>
     <div vw-plugin-wrapper>
       <div class="vw-plugin-top-wrapper"></div>
     </div>
   </div>
-  
+
   <script src="https://vlibras.gov.br/app/vlibras-plugin.js"></script>
-  
+
   <script>
     new window.VLibras.Widget('https://vlibras.gov.br/app');
   </script>
