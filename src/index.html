@@ -4,7 +4,6 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="./css/styles.css">
   <script src="https://unpkg.com/scrollreveal"></script>
   <script src="./js/scripts.js"></script>
   <link
@@ -13,6 +12,10 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css"
     integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw=="
     crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+
+  <link rel="stylesheet" href="./css/styles.css">
+
 
 
   <title>Antunes Interiores</title>
@@ -141,35 +144,117 @@
         <h2 class="font-display text-4xl md:text-5xl text-[#747474] mt-4">Espaços com Personalidade</h2>
       </div>
 
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+      <div class="relative w-full max-w-6xl mx-auto">
 
-        <div class="group relative overflow-hidden rounded-sm cursor-pointer h-[400px]">
-          <img src="./img/projeto2.webp" alt="sala de estar moderna urbana"
-            class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+        <button
+          class="custom-prev absolute left-[-50px] top-1/2 -translate-y-1/2 text-[#A68A64] hover:text-[#8c7352] transition-colors z-10 hidden md:block">
+          <i class="fas fa-chevron-left text-3xl"></i>
+        </button>
 
-          <div
-            class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col items-center justify-center text-white">
-            <h3 class="font-display text-3xl translate-y-4 group-hover:translate-y-0 transition-transform duration-500">
-              Residência Alpha</h3>
-            <p
-              class="font-montserrat text-xs uppercase tracking-widest mt-2 translate-y-4 group-hover:translate-y-0 transition-transform duration-500 delay-75">
-              Living Integrado</p>
+        <div class="swiper mySwiper w-full rounded-sm !pb-14">
+          <div class="swiper-wrapper">
+
+            <div class="swiper-slide group relative cursor-pointer overflow-hidden h-[400px] rounded-sm">
+              <img src="./img/carrossel1.jpg" alt="Projeto"
+                class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+              <div
+                class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col items-center justify-center text-white">
+                <h3
+                  class="font-display text-3xl translate-y-4 group-hover:translate-y-0 transition-transform duration-500">
+                  Cobertura Skyline</h3>
+                <p
+                  class="font-montserrat text-xs uppercase tracking-widest mt-2 translate-y-4 group-hover:translate-y-0 transition-transform duration-500 delay-200">
+                  Salas Aconchegantes 
+                </p>
+              </div>
+            </div>
+
+            <div class="swiper-slide group relative cursor-pointer overflow-hidden h-[400px] rounded-sm">
+              <img src="./img/carrossel2.webp" alt="Projeto"
+                class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+              <div
+                class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col items-center justify-center text-white">
+                <h3
+                  class="font-display text-3xl translate-y-4 group-hover:translate-y-0 transition-transform duration-500">
+                  Mansão das Pedras</h3>
+                <p
+                  class="font-montserrat text-xs uppercase tracking-widest mt-2 translate-y-4 group-hover:translate-y-0 transition-transform duration-500 delay-200">
+                  Suíte Master
+                </p>
+              </div>
+            </div>
+
+            <div class="swiper-slide group relative cursor-pointer overflow-hidden h-[400px] rounded-sm">
+              <img src="./img/carrossel3.jpeg" alt="Projeto"
+                class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+              <div
+                class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col items-center justify-center text-white">
+                <h3
+                  class="font-display text-3xl translate-y-4 group-hover:translate-y-0 transition-transform duration-500">
+                  Estúdio Horizonte</h3>
+                <p
+                  class="font-montserrat text-xs uppercase tracking-widest mt-2 translate-y-4 group-hover:translate-y-0 transition-transform duration-500 delay-200">
+                  Home Office
+                </p>
+              </div>
+            </div>
+
+            <div class="swiper-slide group relative cursor-pointer overflow-hidden h-[400px] rounded-sm">
+              <img src="./img/carrossel4.jpg" alt="Projeto"
+                class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+              <div
+                class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col items-center justify-center text-white">
+                <h3
+                  class="font-display text-3xl translate-y-4 group-hover:translate-y-0 transition-transform duration-500">
+                  Villa Toscana</h3>
+                <p
+                  class="font-montserrat text-xs uppercase tracking-widest mt-2 translate-y-4 group-hover:translate-y-0 transition-transform duration-500 delay-200">
+                  Cozinha Planejada
+                </p>
+              </div>
+            </div>
+
+            <div class="swiper-slide group relative cursor-pointer overflow-hidden h-[400px] rounded-sm">
+              <img src="./img/carrossel5.jpg" alt="Projeto"
+                class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+              <div
+                class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col items-center justify-center text-white">
+                <h3
+                  class="font-display text-3xl translate-y-4 group-hover:translate-y-0 transition-transform duration-500">
+                  Penthouse Jardins</h3>
+                <p
+                  class="font-montserrat text-xs uppercase tracking-widest mt-2 translate-y-4 group-hover:translate-y-0 transition-transform duration-500 delay-200">
+                  Salas Modernas
+                </p>
+              </div>
+            </div>
+
+            <div class="swiper-slide group relative cursor-pointer overflow-hidden h-[400px] rounded-sm">
+              <img src="./img/carrossel6.webp" alt="Projeto"
+                class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+              <div
+                class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col items-center justify-center text-white">
+                <h3
+                  class="font-display text-3xl translate-y-4 group-hover:translate-y-0 transition-transform duration-500">
+                  Bangalô Serramar</h3>
+                <p
+                  class="font-montserrat text-xs uppercase tracking-widest mt-2 translate-y-4 group-hover:translate-y-0 transition-transform duration-500 delay-200">
+                  Living Integrado
+                </p>
+              </div>
+            </div>
+
           </div>
+
+          <div class="swiper-pagination"></div>
+
+
         </div>
 
-        <div class="group relative overflow-hidden rounded-sm cursor-pointer h-[400px]">
-          <img src="./img/projeto1.jpeg" alt="sala de estar moderna minimalista"
-            class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
-
-          <div
-            class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col items-center justify-center text-white">
-            <h3 class="font-display text-3xl translate-y-4 group-hover:translate-y-0 transition-transform duration-500">
-              Apartamento Vila Nova</h3>
-            <p
-              class="font-montserrat text-xs uppercase tracking-widest mt-2 translate-y-4 group-hover:translate-y-0 transition-transform duration-500 delay-75">
-              Suíte Master</p>
-          </div>
-        </div>
+        <button
+          class="custom-next absolute right-[-50px] top-1/2 -translate-y-1/2 text-[#A68A64] hover:text-[#8c7352] transition-colors z-10 hidden md:block">
+          <i class="fas fa-chevron-right text-3xl"></i>
+        </button>
 
       </div>
 
@@ -408,6 +493,7 @@
 
     </div>
   </div>
+  <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
 </body>
 
 </html>
