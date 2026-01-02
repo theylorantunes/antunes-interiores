@@ -158,11 +158,11 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // --- DARK MODE (mobile e desk)---
 
-    const themeToggleBtn = document.getElementById('theme-toggle');     
-    const themeIcon = document.getElementById('theme-icon');             
+    const themeToggleBtn = document.getElementById('theme-toggle');
+    const themeIcon = document.getElementById('theme-icon');
 
-    const mobileThemeToggleBtn = document.getElementById('theme-toggle-mobile'); 
-    const mobileThemeIcon = document.getElementById('theme-icon-mobile');        
+    const mobileThemeToggleBtn = document.getElementById('theme-toggle-mobile');
+    const mobileThemeIcon = document.getElementById('theme-icon-mobile');
 
 
     function updateIcons(isDark) {
@@ -204,6 +204,102 @@ document.addEventListener('DOMContentLoaded', () => {
     }
     if (mobileThemeToggleBtn) {
         mobileThemeToggleBtn.addEventListener('click', toggleTheme);
+    }
+
+    // --- CHATBOT  ---
+    const chatWindow = document.getElementById('chat-window');
+    const openChatBtn = document.getElementById('open-chat-btn');
+    const closeChatBtn = document.getElementById('close-chat-btn');
+    const sendBtn = document.getElementById('send-btn');
+    const chatInput = document.getElementById('chat-input');
+    const messagesArea = document.getElementById('chat-messages');
+
+    let isChatOpen = false;
+
+    function toggleChat() {
+        isChatOpen = !isChatOpen;
+        if (isChatOpen) {
+            chatWindow.classList.remove('hidden');
+
+            setTimeout(() => {
+                chatWindow.classList.remove('scale-95', 'opacity-0');
+                chatWindow.classList.add('scale-100', 'opacity-100');
+            }, 10);
+
+            if (messagesArea.children.length === 0) {
+                setTimeout(() => {
+                    addBotMessage("Olá! Bem-vindo à Antunes Interiores.");
+                    setTimeout(() => addBotMessage("Como posso ajudar você hoje?"), 800);
+                }, 500);
+            }
+        } else {
+            chatWindow.classList.add('scale-95', 'opacity-0');
+            chatWindow.classList.remove('scale-100', 'opacity-100');
+            setTimeout(() => {
+                chatWindow.classList.add('hidden');
+            }, 300);
+        }
+    }
+
+    function addMessage(text, sender) {
+        const div = document.createElement('div');
+        const isUser = sender === 'user';
+
+        div.className = `flex ${isUser ? 'justify-end' : 'justify-start'}`;
+
+        div.innerHTML = `
+            <div class="max-w-[80%] px-4 py-2 rounded-2xl text-sm ${isUser
+                ? 'bg-[#A68A64] text-white rounded-br-none'
+                : 'bg-gray-200 dark:bg-[#2c2c2c] text-gray-700 dark:text-gray-200 rounded-bl-none'
+            }">
+                ${text}
+            </div>
+        `;
+
+        messagesArea.appendChild(div);
+        messagesArea.scrollTop = messagesArea.scrollHeight;
+    }
+
+    function addBotMessage(text) {
+        addMessage(text, 'bot');
+    }
+
+    function handleSend() {
+        const text = chatInput.value.trim();
+        if (!text) return;
+
+        addMessage(text, 'user');
+        chatInput.value = '';
+
+        setTimeout(() => {
+            const response = "Entendi, para te dar um atendimento exclusivo e personalizado, vamos continuar nossa conversa no WhatsApp?";
+
+            addBotMessage(response);
+
+            setTimeout(() => {
+                const btnDiv = document.createElement('div');
+                btnDiv.className = "flex justify-start";
+                btnDiv.innerHTML = `
+                    <a href="https://wa.me/5511999999999" target="_blank" class="mt-2 px-4 py-2 bg-[#25D366] hover:bg-[#20bd5a] text-white text-xs font-bold uppercase rounded-full shadow-md transition-transform hover:scale-105 flex items-center gap-2">
+                        <i class="fab fa-whatsapp text-lg"></i> Chamar no WhatsApp
+                    </a>
+                `;
+                messagesArea.appendChild(btnDiv);
+                messagesArea.scrollTop = messagesArea.scrollHeight;
+            }, 1000);
+
+        }, 1500);
+    }
+
+
+    if (openChatBtn && closeChatBtn) {
+        openChatBtn.addEventListener('click', toggleChat);
+        closeChatBtn.addEventListener('click', toggleChat);
+
+        sendBtn.addEventListener('click', handleSend);
+        chatInput.addEventListener('keypress', (e) => {
+            if (e.key === 'Enter') handleSend();
+        });
     }
 });
 
