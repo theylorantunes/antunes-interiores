@@ -218,22 +218,47 @@ document.addEventListener('DOMContentLoaded', () => {
     const chatInput = document.getElementById('chat-input');
     const messagesArea = document.getElementById('chat-messages');
 
+
     let isChatOpen = false;
+
+  
+    let conversationHistory = [
+        {
+            role: "system",
+            content: `Você é o assistente virtual oficial da **Antunes Interiores**.
+            
+            ## Sua Personalidade
+            - Sofisticado, elegante e acolhedor.
+            - Especialista em Design de Interiores, Projetos Executivos e Obras.
+            - Responde sempre em **Português do Brasil**.
+            - Use formatação Markdown (negrito, listas) para facilitar a leitura.
+            
+            ## Seus Objetivos
+            1. Tirar dúvidas sobre estilos de decoração e serviços da Antunes.
+            2. Encantar o cliente.
+            3. Sugerir sutilmente que o cliente agende uma reunião ou chame no WhatsApp para um orçamento detalhado.
+            
+            Se o cliente perguntar preços exatos, diga que depende da metragem e complexidade, e convide para o WhatsApp.`
+        }
+    ];
+
+ 
 
     function toggleChat() {
         isChatOpen = !isChatOpen;
         if (isChatOpen) {
             chatWindow.classList.remove('hidden');
-
+           
             setTimeout(() => {
                 chatWindow.classList.remove('scale-95', 'opacity-0');
                 chatWindow.classList.add('scale-100', 'opacity-100');
             }, 10);
 
+           
             if (messagesArea.children.length === 0) {
                 setTimeout(() => {
-                    addBotMessage("Olá! Bem-vindo à Antunes Interiores.");
-                    setTimeout(() => addBotMessage("Como posso ajudar você hoje?"), 800);
+                    addMessage("Olá! Bem-vindo à Antunes Interiores. ✨", 'bot');
+                    setTimeout(() => addMessage("Sou sua inteligência de design. Como posso transformar seu ambiente hoje?", 'bot'), 800);
                 }, 500);
             }
         } else {
@@ -245,18 +270,33 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
-    function addMessage(text, sender) {
+  
+    function addMessage(text, sender, isLoading = false) {
         const div = document.createElement('div');
         const isUser = sender === 'user';
 
-        div.className = `flex ${isUser ? 'justify-end' : 'justify-start'}`;
+        if (isLoading) div.id = 'loading-indicator';
+
+        div.className = `flex ${isUser ? 'justify-end' : 'justify-start'} mb-4 animate-fade-in`;
+
+        let contentHtml = text;
+        if (isLoading) {
+            contentHtml = `<div class="flex items-center gap-2 text-xs text-gray-500">
+                             <i class="fas fa-circle-notch fa-spin"></i>
+                             <span>Antunes está pensando...</span>
+                           </div>`;
+        } else if (!isUser && window.marked) {
+            contentHtml = window.marked.parse(text);
+        }
+
+ 
+        const bubbleStyle = isUser
+            ? 'bg-[#A68A64] text-white rounded-br-none shadow-md'
+            : 'bg-gray-100 dark:bg-[#2c2c2c] text-gray-700 dark:text-gray-200 rounded-bl-none border border-gray-200 dark:border-gray-700 shadow-sm';
 
         div.innerHTML = `
-            <div class="max-w-[80%] px-4 py-2 rounded-2xl text-sm ${isUser
-                ? 'bg-[#A68A64] text-white rounded-br-none'
-                : 'bg-gray-200 dark:bg-[#2c2c2c] text-gray-700 dark:text-gray-200 rounded-bl-none'
-            }">
-                ${text}
+            <div class="max-w-[85%] px-4 py-3 rounded-2xl text-sm leading-relaxed ${bubbleStyle} prose-sm prose-p:my-1 prose-ul:my-1">
+                ${contentHtml}
             </div>
         `;
 
@@ -264,35 +304,81 @@ document.addEventListener('DOMContentLoaded', () => {
         messagesArea.scrollTop = messagesArea.scrollHeight;
     }
 
-    function addBotMessage(text) {
-        addMessage(text, 'bot');
+  
+    const API_URL = '/api/chat';
+
+
+    async function fetchAzureBot(messages) {
+        try {
+            
+            const response = await fetch(API_URL, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                   
+                },
+                body: JSON.stringify({
+                    messages: messages
+                }),
+            });
+
+            if (!response.ok) {
+                console.error('Erro na API interna:', response.status);
+                throw new Error('Falha na comunicação com o servidor');
+            }
+
+            const data = await response.json();
+            return data.choices?.[0]?.message?.content || 'Desculpe, não consegui formular uma resposta.';
+        } catch (error) {
+            console.error(error);
+            throw error;
+        }
     }
 
-    function handleSend() {
+
+    async function handleSend() {
         const text = chatInput.value.trim();
         if (!text) return;
 
+ 
         addMessage(text, 'user');
         chatInput.value = '';
+        chatInput.focus();
 
-        setTimeout(() => {
-            const response = "Entendi, para te dar um atendimento exclusivo e personalizado, vamos continuar nossa conversa no WhatsApp?";
 
-            addBotMessage(response);
+        conversationHistory.push({ role: "user", content: text });
 
-            setTimeout(() => {
-                const btnDiv = document.createElement('div');
-                btnDiv.className = "flex justify-start";
-                btnDiv.innerHTML = `
-                    <a href="https://wa.me/5511999999999" target="_blank" class="mt-2 px-4 py-2 bg-[#25D366] hover:bg-[#20bd5a] text-white text-xs font-bold uppercase rounded-full shadow-md transition-transform hover:scale-105 flex items-center gap-2">
-                        <i class="fab fa-whatsapp text-lg"></i> Chamar no WhatsApp
-                    </a>
-                `;
-                messagesArea.appendChild(btnDiv);
-                messagesArea.scrollTop = messagesArea.scrollHeight;
-            }, 1000);
 
-        }, 1500);
+        addMessage("", 'bot', true);
+
+        try {
+
+            const botText = await fetchAzureBot(conversationHistory);
+
+
+            const loadingDiv = document.getElementById('loading-indicator');
+            if (loadingDiv) loadingDiv.remove();
+
+            addMessage(botText, 'bot');
+            conversationHistory.push({ role: "assistant", content: botText });
+
+        } catch (error) {
+      
+            const loadingDiv = document.getElementById('loading-indicator');
+            if (loadingDiv) loadingDiv.remove();
+
+            addMessage("Tive um problema de conexão. Que tal continuarmos no WhatsApp?", 'bot');
+
+            const btnDiv = document.createElement('div');
+            btnDiv.className = "flex justify-start mb-4";
+            btnDiv.innerHTML = `
+                <a href="https://wa.me/5511999999999" target="_blank" class="px-4 py-2 bg-[#25D366] hover:bg-[#20bd5a] text-white text-xs font-bold uppercase rounded-full shadow-md transition-transform hover:scale-105 flex items-center gap-2">
+                    <i class="fab fa-whatsapp text-lg"></i> Falar no WhatsApp
+                </a>
+            `;
+            messagesArea.appendChild(btnDiv);
+            messagesArea.scrollTop = messagesArea.scrollHeight;
+        }
     }
 
 
