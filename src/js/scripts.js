@@ -249,11 +249,13 @@ document.addEventListener('DOMContentLoaded', () => {
         if (isChatOpen) {
             chatWindow.classList.remove('hidden');
 
+            messagesArea.classList.add('flex-1', 'overflow-y-auto', 'min-h-0');
+            // -----------------------------
+
             setTimeout(() => {
                 chatWindow.classList.remove('scale-95', 'opacity-0');
                 chatWindow.classList.add('scale-100', 'opacity-100');
             }, 10);
-
 
             if (messagesArea.children.length === 0) {
                 setTimeout(() => {
@@ -277,6 +279,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
         if (isLoading) div.id = 'loading-indicator';
 
+       
         div.className = `flex ${isUser ? 'justify-end' : 'justify-start'} mb-4 animate-fade-in shrink-0`;
 
         let contentHtml = text;
@@ -293,16 +296,18 @@ document.addEventListener('DOMContentLoaded', () => {
             ? 'bg-[#A68A64] text-white rounded-br-none shadow-md'
             : 'bg-gray-100 dark:bg-[#2c2c2c] text-gray-700 dark:text-gray-200 rounded-bl-none border border-gray-200 dark:border-gray-700 shadow-sm';
 
+    
         div.innerHTML = `
-            <div class="max-w-[85%] px-4 py-3 rounded-2xl text-sm leading-relaxed ${bubbleStyle} prose-sm break-words overflow-hidden">
+            <div class="max-w-[85%] px-4 py-3 rounded-2xl text-sm leading-relaxed ${bubbleStyle} prose-sm break-words break-all overflow-hidden min-w-0">
                 ${contentHtml}
             </div>
         `;
 
         messagesArea.appendChild(div);
 
+       
         setTimeout(() => {
-            messagesArea.scrollTop = messagesArea.scrollHeight;
+            div.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
         }, 100);
     }
 
