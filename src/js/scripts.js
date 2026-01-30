@@ -19,22 +19,18 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-
     // --- LÓGICA DO FORMULÁRIO E MODAL ---
     const btnOpenForm = document.getElementById('btn-open-form');
     const infoBlock = document.getElementById('contact-info');
     const formBlock = document.getElementById('contact-form');
-
 
     const successModal = document.getElementById('success-modal');
     const modalContent = document.getElementById('modal-content');
     const modalOverlay = document.getElementById('modal-overlay');
     const closeModalBtn = document.getElementById('close-modal-btn');
 
-
     function showModal() {
         successModal.classList.remove('hidden');
-
         setTimeout(() => {
             modalOverlay.classList.remove('opacity-0');
             modalContent.classList.remove('opacity-0', 'scale-90');
@@ -46,7 +42,6 @@ document.addEventListener('DOMContentLoaded', () => {
         modalOverlay.classList.add('opacity-0');
         modalContent.classList.add('opacity-0', 'scale-90');
         modalContent.classList.remove('scale-100');
-
         setTimeout(() => {
             successModal.classList.add('hidden');
         }, 300);
@@ -58,7 +53,6 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     if (btnOpenForm && infoBlock && formBlock) {
-
         btnOpenForm.addEventListener('click', (e) => {
             e.preventDefault();
             infoBlock.classList.remove('opacity-100');
@@ -115,38 +109,31 @@ document.addEventListener('DOMContentLoaded', () => {
             setError(emailInput, !emailRegex.test(emailInput.value.trim()));
 
             if (isValid) {
-
                 showModal();
-
                 formBlock.reset();
             }
         });
     }
-    // --- SWIPER ---
 
+    // --- SWIPER ---
     if (document.querySelector('.mySwiper')) {
         const swiper = new Swiper(".mySwiper", {
             slidesPerView: 1,
             spaceBetween: 30,
             loop: true,
-
             pagination: {
                 el: ".swiper-pagination",
                 clickable: true,
                 dynamicBullets: true,
             },
-
-
             navigation: {
                 nextEl: ".custom-next",
                 prevEl: ".custom-prev",
             },
-
             autoplay: {
                 delay: 3000,
                 disableOnInteraction: false,
             },
-
             breakpoints: {
                 768: {
                     slidesPerView: 2,
@@ -160,36 +147,28 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // --- DARK MODE (mobile e desk)---
-
+    // --- DARK MODE ---
     const themeToggleBtn = document.getElementById('theme-toggle');
     const themeIcon = document.getElementById('theme-icon');
-
     const mobileThemeToggleBtn = document.getElementById('theme-toggle-mobile');
     const mobileThemeIcon = document.getElementById('theme-icon-mobile');
-
 
     function updateIcons(isDark) {
         const iconClassToRemove = isDark ? 'fa-moon' : 'fa-sun';
         const iconClassToAdd = isDark ? 'fa-sun' : 'fa-moon';
-
-
         if (themeIcon) {
             themeIcon.classList.remove(iconClassToRemove);
             themeIcon.classList.add(iconClassToAdd);
         }
-
         if (mobileThemeIcon) {
             mobileThemeIcon.classList.remove(iconClassToRemove);
             mobileThemeIcon.classList.add(iconClassToAdd);
         }
     }
 
-
     function toggleTheme() {
         document.documentElement.classList.toggle('dark');
         const isDark = document.documentElement.classList.contains('dark');
-
         updateIcons(isDark);
         localStorage.theme = isDark ? 'dark' : 'light';
     }
@@ -202,15 +181,12 @@ document.addEventListener('DOMContentLoaded', () => {
         updateIcons(false);
     }
 
+    if (themeToggleBtn) themeToggleBtn.addEventListener('click', toggleTheme);
+    if (mobileThemeToggleBtn) mobileThemeToggleBtn.addEventListener('click', toggleTheme);
 
-    if (themeToggleBtn) {
-        themeToggleBtn.addEventListener('click', toggleTheme);
-    }
-    if (mobileThemeToggleBtn) {
-        mobileThemeToggleBtn.addEventListener('click', toggleTheme);
-    }
 
-    // --- CHATBOT  ---
+    
+    // Elementos da Interface
     const chatWindow = document.getElementById('chat-window');
     const openChatBtn = document.getElementById('open-chat-btn');
     const closeChatBtn = document.getElementById('close-chat-btn');
@@ -218,8 +194,9 @@ document.addEventListener('DOMContentLoaded', () => {
     const chatInput = document.getElementById('chat-input');
     const messagesArea = document.getElementById('chat-messages');
 
-
     let isChatOpen = false;
+
+    const API_URL = '/api/chat';
 
 
     let conversationHistory = [
@@ -249,14 +226,15 @@ document.addEventListener('DOMContentLoaded', () => {
         if (isChatOpen) {
             chatWindow.classList.remove('hidden');
 
+
             messagesArea.classList.add('flex-1', 'overflow-y-auto', 'min-h-0');
-            // -----------------------------
 
             setTimeout(() => {
                 chatWindow.classList.remove('scale-95', 'opacity-0');
                 chatWindow.classList.add('scale-100', 'opacity-100');
             }, 10);
 
+    
             if (messagesArea.children.length === 0) {
                 setTimeout(() => {
                     addMessage("Olá! Bem-vindo à Antunes Interiores. ✨", 'bot');
@@ -272,15 +250,15 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
-
     function addMessage(text, sender, isLoading = false) {
         const div = document.createElement('div');
         const isUser = sender === 'user';
-
+        
         if (isLoading) div.id = 'loading-indicator';
 
-       
+
         div.className = `flex ${isUser ? 'justify-end' : 'justify-start'} mb-4 animate-fade-in shrink-0`;
+
 
         let contentHtml = text;
         if (isLoading) {
@@ -292,45 +270,38 @@ document.addEventListener('DOMContentLoaded', () => {
             contentHtml = window.marked.parse(text);
         }
 
-        const bubbleStyle = isUser
-            ? 'bg-[#A68A64] text-white rounded-br-none shadow-md'
+
+        const bubbleStyle = isUser 
+            ? 'bg-[#A68A64] text-white rounded-br-none shadow-md' 
             : 'bg-gray-100 dark:bg-[#2c2c2c] text-gray-700 dark:text-gray-200 rounded-bl-none border border-gray-200 dark:border-gray-700 shadow-sm';
 
-    
+
         div.innerHTML = `
-            <div class="max-w-[85%] px-4 py-3 rounded-2xl text-sm leading-relaxed ${bubbleStyle} prose-sm break-words break-all overflow-hidden min-w-0">
+            <div class="max-w-[85%] px-4 py-3 rounded-2xl text-sm leading-relaxed ${bubbleStyle} prose-sm prose-p:my-1 prose-ul:my-1 break-words break-all overflow-hidden min-w-0">
                 ${contentHtml}
             </div>
         `;
 
         messagesArea.appendChild(div);
 
-       
+
         setTimeout(() => {
             div.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
         }, 100);
     }
 
 
-    const API_URL = '/api/chat';
-
 
     async function fetchAzureBot(messages) {
         try {
-
             const response = await fetch(API_URL, {
                 method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json'
-
-                },
-                body: JSON.stringify({
-                    messages: messages
-                }),
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ messages: messages }),
             });
 
             if (!response.ok) {
-                console.error('Erro na API interna:', response.status);
+                console.error('Erro API interna:', response.status);
                 throw new Error('Falha na comunicação com o servidor');
             }
 
@@ -342,27 +313,27 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
-
+    
     async function handleSend() {
         const text = chatInput.value.trim();
         if (!text) return;
 
-
+       
         addMessage(text, 'user');
         chatInput.value = '';
         chatInput.focus();
 
-
+    
         conversationHistory.push({ role: "user", content: text });
 
-
+       
         addMessage("", 'bot', true);
 
         try {
-
+          
             const botText = await fetchAzureBot(conversationHistory);
 
-
+            
             const loadingDiv = document.getElementById('loading-indicator');
             if (loadingDiv) loadingDiv.remove();
 
@@ -370,12 +341,12 @@ document.addEventListener('DOMContentLoaded', () => {
             conversationHistory.push({ role: "assistant", content: botText });
 
         } catch (error) {
-
+           
             const loadingDiv = document.getElementById('loading-indicator');
             if (loadingDiv) loadingDiv.remove();
-
+            
             addMessage("Tive um problema de conexão. Que tal continuarmos no WhatsApp?", 'bot');
-
+            
             const btnDiv = document.createElement('div');
             btnDiv.className = "flex justify-start mb-4";
             btnDiv.innerHTML = `
@@ -388,7 +359,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
-
+   
     if (openChatBtn && closeChatBtn) {
         openChatBtn.addEventListener('click', toggleChat);
         closeChatBtn.addEventListener('click', toggleChat);
@@ -399,4 +370,3 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 });
-
