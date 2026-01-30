@@ -115,7 +115,6 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // --- SWIPER ---
     if (document.querySelector('.mySwiper')) {
         const swiper = new Swiper(".mySwiper", {
             slidesPerView: 1,
@@ -147,7 +146,6 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // --- DARK MODE ---
     const themeToggleBtn = document.getElementById('theme-toggle');
     const themeIcon = document.getElementById('theme-icon');
     const mobileThemeToggleBtn = document.getElementById('theme-toggle-mobile');
@@ -186,7 +184,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
     
-    // Elementos da Interface
+    
     const chatWindow = document.getElementById('chat-window');
     const openChatBtn = document.getElementById('open-chat-btn');
     const closeChatBtn = document.getElementById('close-chat-btn');
@@ -197,7 +195,6 @@ document.addEventListener('DOMContentLoaded', () => {
     let isChatOpen = false;
 
     const API_URL = '/api/chat';
-
 
     let conversationHistory = [
         {
@@ -220,21 +217,21 @@ document.addEventListener('DOMContentLoaded', () => {
     ];
 
 
-
     function toggleChat() {
         isChatOpen = !isChatOpen;
         if (isChatOpen) {
             chatWindow.classList.remove('hidden');
-
-
+            
+            chatWindow.classList.add('flex'); 
+            
             messagesArea.classList.add('flex-1', 'overflow-y-auto', 'min-h-0');
+            // -------------------------------------
 
             setTimeout(() => {
                 chatWindow.classList.remove('scale-95', 'opacity-0');
                 chatWindow.classList.add('scale-100', 'opacity-100');
             }, 10);
 
-    
             if (messagesArea.children.length === 0) {
                 setTimeout(() => {
                     addMessage("Olá! Bem-vindo à Antunes Interiores. ✨", 'bot');
@@ -246,6 +243,7 @@ document.addEventListener('DOMContentLoaded', () => {
             chatWindow.classList.remove('scale-100', 'opacity-100');
             setTimeout(() => {
                 chatWindow.classList.add('hidden');
+                chatWindow.classList.remove('flex');
             }, 300);
         }
     }
@@ -256,9 +254,7 @@ document.addEventListener('DOMContentLoaded', () => {
         
         if (isLoading) div.id = 'loading-indicator';
 
-
         div.className = `flex ${isUser ? 'justify-end' : 'justify-start'} mb-4 animate-fade-in shrink-0`;
-
 
         let contentHtml = text;
         if (isLoading) {
@@ -270,11 +266,9 @@ document.addEventListener('DOMContentLoaded', () => {
             contentHtml = window.marked.parse(text);
         }
 
-
         const bubbleStyle = isUser 
             ? 'bg-[#A68A64] text-white rounded-br-none shadow-md' 
             : 'bg-gray-100 dark:bg-[#2c2c2c] text-gray-700 dark:text-gray-200 rounded-bl-none border border-gray-200 dark:border-gray-700 shadow-sm';
-
 
         div.innerHTML = `
             <div class="max-w-[85%] px-4 py-3 rounded-2xl text-sm leading-relaxed ${bubbleStyle} prose-sm prose-p:my-1 prose-ul:my-1 break-words break-all overflow-hidden min-w-0">
@@ -284,12 +278,10 @@ document.addEventListener('DOMContentLoaded', () => {
 
         messagesArea.appendChild(div);
 
-
         setTimeout(() => {
             div.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
         }, 100);
     }
-
 
 
     async function fetchAzureBot(messages) {
@@ -313,24 +305,22 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
-    
     async function handleSend() {
         const text = chatInput.value.trim();
         if (!text) return;
 
-       
         addMessage(text, 'user');
         chatInput.value = '';
         chatInput.focus();
 
-    
+      
         conversationHistory.push({ role: "user", content: text });
 
-       
+        
         addMessage("", 'bot', true);
 
         try {
-          
+            
             const botText = await fetchAzureBot(conversationHistory);
 
             
@@ -341,7 +331,7 @@ document.addEventListener('DOMContentLoaded', () => {
             conversationHistory.push({ role: "assistant", content: botText });
 
         } catch (error) {
-           
+            
             const loadingDiv = document.getElementById('loading-indicator');
             if (loadingDiv) loadingDiv.remove();
             
@@ -359,7 +349,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
-   
+    // Listeners
     if (openChatBtn && closeChatBtn) {
         openChatBtn.addEventListener('click', toggleChat);
         closeChatBtn.addEventListener('click', toggleChat);
