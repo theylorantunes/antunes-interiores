@@ -221,7 +221,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     let isChatOpen = false;
 
-  
+
     let conversationHistory = [
         {
             role: "system",
@@ -242,19 +242,19 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     ];
 
- 
+
 
     function toggleChat() {
         isChatOpen = !isChatOpen;
         if (isChatOpen) {
             chatWindow.classList.remove('hidden');
-           
+
             setTimeout(() => {
                 chatWindow.classList.remove('scale-95', 'opacity-0');
                 chatWindow.classList.add('scale-100', 'opacity-100');
             }, 10);
 
-           
+
             if (messagesArea.children.length === 0) {
                 setTimeout(() => {
                     addMessage("Olá! Bem-vindo à Antunes Interiores. ✨", 'bot');
@@ -270,14 +270,14 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
-  
+
     function addMessage(text, sender, isLoading = false) {
         const div = document.createElement('div');
         const isUser = sender === 'user';
 
         if (isLoading) div.id = 'loading-indicator';
 
-        div.className = `flex ${isUser ? 'justify-end' : 'justify-start'} mb-4 animate-fade-in`;
+        div.className = `flex ${isUser ? 'justify-end' : 'justify-start'} mb-4 animate-fade-in shrink-0`;
 
         let contentHtml = text;
         if (isLoading) {
@@ -289,35 +289,39 @@ document.addEventListener('DOMContentLoaded', () => {
             contentHtml = window.marked.parse(text);
         }
 
- 
         const bubbleStyle = isUser
             ? 'bg-[#A68A64] text-white rounded-br-none shadow-md'
             : 'bg-gray-100 dark:bg-[#2c2c2c] text-gray-700 dark:text-gray-200 rounded-bl-none border border-gray-200 dark:border-gray-700 shadow-sm';
 
         div.innerHTML = `
-            <div class="max-w-[85%] px-4 py-3 rounded-2xl text-sm leading-relaxed ${bubbleStyle} prose-sm prose-p:my-1 prose-ul:my-1 break-words overflow-x-hidden">
+            <div class="max-w-[85%] min-w-0 px-4 py-3 rounded-2xl text-sm leading-relaxed ${bubbleStyle} prose-sm prose-p:my-1 prose-ul:my-1 break-words overflow-hidden">
                 ${contentHtml}
             </div>
         `;
 
         messagesArea.appendChild(div);
-        setTimeout(() => {
-            messagesArea.scrollTop = messagesArea.scrollHeight;
-        }, 50);
+
+
+        requestAnimationFrame(() => {
+            messagesArea.scrollTo({
+                top: messagesArea.scrollHeight,
+                behavior: 'smooth'
+            });
+        });
     }
 
-  
+
     const API_URL = '/api/chat';
 
 
     async function fetchAzureBot(messages) {
         try {
-            
+
             const response = await fetch(API_URL, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
-                   
+
                 },
                 body: JSON.stringify({
                     messages: messages
@@ -342,7 +346,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const text = chatInput.value.trim();
         if (!text) return;
 
- 
+
         addMessage(text, 'user');
         chatInput.value = '';
         chatInput.focus();
@@ -365,7 +369,7 @@ document.addEventListener('DOMContentLoaded', () => {
             conversationHistory.push({ role: "assistant", content: botText });
 
         } catch (error) {
-      
+
             const loadingDiv = document.getElementById('loading-indicator');
             if (loadingDiv) loadingDiv.remove();
 
