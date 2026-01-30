@@ -295,13 +295,15 @@ document.addEventListener('DOMContentLoaded', () => {
             : 'bg-gray-100 dark:bg-[#2c2c2c] text-gray-700 dark:text-gray-200 rounded-bl-none border border-gray-200 dark:border-gray-700 shadow-sm';
 
         div.innerHTML = `
-            <div class="max-w-[85%] px-4 py-3 rounded-2xl text-sm leading-relaxed ${bubbleStyle} prose-sm prose-p:my-1 prose-ul:my-1">
+            <div class="max-w-[85%] px-4 py-3 rounded-2xl text-sm leading-relaxed ${bubbleStyle} prose-sm prose-p:my-1 prose-ul:my-1 break-words overflow-x-hidden">
                 ${contentHtml}
             </div>
         `;
 
         messagesArea.appendChild(div);
-        messagesArea.scrollTop = messagesArea.scrollHeight;
+        setTimeout(() => {
+            messagesArea.scrollTop = messagesArea.scrollHeight;
+        }, 50);
     }
 
   
