@@ -259,7 +259,7 @@ document.addEventListener('DOMContentLoaded', () => {
             : 'bg-gray-100 dark:bg-[#2c2c2c] text-gray-700 dark:text-gray-200 rounded-bl-none border border-gray-200 dark:border-gray-700 shadow-sm';
 
         div.innerHTML = `
-            <div class="max-w-[85%] px-4 py-3 rounded-2xl text-sm leading-relaxed ${bubbleStyle} prose-sm prose-p:my-1 prose-ul:my-1 break-words break-all">
+            <div class="max-w-[75%] px-3 py-2 rounded-xl text-xs leading-snug ${bubbleStyle} prose-sm prose-p:my-0 prose-ul:my-0">
                 ${contentHtml}
             </div>
         `;
