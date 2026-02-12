@@ -716,6 +716,10 @@ video {
   top: 50%;
 }
 
+.left-6 {
+  left: 1.5rem;
+}
+
 .isolate {
   isolation: isolate;
 }
@@ -1143,6 +1147,10 @@ video {
 
 .origin-bottom-right {
   transform-origin: bottom right;
+}
+
+.origin-bottom-left {
+  transform-origin: bottom left;
 }
 
 .-translate-y-1\/2 {
