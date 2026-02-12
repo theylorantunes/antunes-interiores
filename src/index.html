@@ -7,6 +7,7 @@
   <script src="https://unpkg.com/scrollreveal"></script>
   <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
   <script src="./js/scripts.js"></script>
+  <link rel="shortcut icon" href="./img/logo.png" type="image/x-icon">
   <link
     href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Montserrat:wght@300;400;600;700&display=swap"
     rel="stylesheet">
@@ -14,7 +15,7 @@
     integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw=="
     crossorigin="anonymous" referrerpolicy="no-referrer" />
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
-  <link rel="shortcut icon" href="./img/" type="image/x-icon">
+
   <link rel="stylesheet" href="./css/styles.css">
 
 
@@ -294,7 +295,7 @@
         class="p-10 border border-gray-200 group hover:shadow-xl hover:-translate-y-2 transition-all duration-300 cursor-pointer dark:border-gray-700 dark:bg-[#121212]">
         <i
           class="fas fa-couch text-4xl text-[#A68A64] mb-6 group-hover:scale-110 transition-transform duration-300"></i>
-        <h3 class="font-display text-2xl text-gray-700 mb-4 dark:text-white font-bold">Design de Interiores</h3>
+        <h3 class="font-display text-2xl text-gray-700 mb-4 dark:text-white">Design de Interiores</h3>
         <p class="font-montserrat text-sm text-gray-500 dark:text-gray-200">Curadoria de mobiliário, texturas e cores que refletem a sua
           personalidade.</p>
       </div>
@@ -303,7 +304,7 @@
         class="p-10 border border-gray-200 group hover:shadow-xl hover:-translate-y-2 transition-all duration-300 cursor-pointer dark:border-gray-700 dark:bg-[#121212]">
         <i
           class="fas fa-pencil-ruler text-4xl text-[#A68A64] mb-6 group-hover:scale-110 transition-transform duration-300"></i>
-        <h3 class="font-display text-2xl text-gray-700 mb-4 dark:text-white font-bold">Projeto Executivo</h3>
+        <h3 class="font-display text-2xl text-gray-700 mb-4 dark:text-white">Projeto Executivo</h3>
         <p class="font-montserrat text-sm text-gray-500 dark:text-gray-200">Detalhamento técnico completo para execução da obra sem
           surpresas e com precisão milimétrica.</p>
       </div>
@@ -312,7 +313,7 @@
         class="p-10 border border-gray-200 group hover:shadow-xl hover:-translate-y-2 transition-all duration-300 cursor-pointer dark:border-gray-700 dark:bg-[#121212]">
         <i
           class="fas fa-hard-hat text-4xl text-[#A68A64] mb-6 group-hover:scale-110 transition-transform duration-300"></i>
-        <h3 class="font-display text-2xl text-gray-700 mb-4 dark:text-white font-bold">Consultoria de Obra</h3>
+        <h3 class="font-display text-2xl text-gray-700 mb-4 dark:text-white">Consultoria de Obra</h3>
         <p class="font-montserrat text-sm text-gray-500 dark:text-gray-200">Acompanhamento técnico para garantir que o projeto saia do
           papel exatamente como planejado.</p>
       </div>
@@ -513,7 +514,7 @@
     </div>
   </div>
 
-  <div class="fixed bottom-6 right-6 z-[60] flex flex-col items-end gap-2">
+  <<div class="fixed bottom-6 right-6 z-[60] flex flex-col items-end gap-2">
 
     <div id="chat-window"
       class="flex flex-col w-[350px] h-[450px] bg-white dark:bg-[#1f1f1f] rounded-lg shadow-2xl overflow-hidden border border-gray-100 dark:border-gray-700 transition-all duration-300 origin-bottom-right transform scale-95 opacity-0 pointer-events-none">
@@ -569,12 +570,21 @@
       <div vw-plugin-top-wrapper></div>
     </div>
   </div>
-  <script src="https://vlibras.gov.br/app/vlibras-plugin.js"></script>
+
   <script>
-  
+    try {
+      localStorage.removeItem('vlibras_position');
+      localStorage.removeItem('vlibras_onload');
+    } catch (e) { console.log(e); }
+  </script>
+
+  <script src="https://vlibras.gov.br/app/vlibras-plugin.js"></script>
+
+  <script>
     new window.VLibras.Widget('https://vlibras.gov.br/app', { position: 'L' });
   </script>
-</body>
+
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
 </body>
 
 </html>
