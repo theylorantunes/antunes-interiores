@@ -1,6 +1,6 @@
 # Antunes Interiores - Landing Page
 
-![Project Cover](../src/img/hero-bg.webp)
+![Project Cover](../src/img/antunes-interiores.png)
 > Uma Landing Page de alta conversão desenvolvida para um escritório de Design de Interiores.
 
 ## Sobre o Projeto
